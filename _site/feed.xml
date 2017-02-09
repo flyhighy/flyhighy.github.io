@@ -5,9 +5,48 @@
     <description>前端开发小菜</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 09 Feb 2017 09:54:57 +0800</pubDate>
-    <lastBuildDate>Thu, 09 Feb 2017 09:54:57 +0800</lastBuildDate>
+    <pubDate>Thu, 09 Feb 2017 20:05:00 +0800</pubDate>
+    <lastBuildDate>Thu, 09 Feb 2017 20:05:00 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>前端这几年</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;14年&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;这一年，node是最火了，也因为node，前端的生态（包管理npm，bower，脚手架yo，打包工具grunt，gulp）在这一年迅速建立起来，大多数公司和团队形成了适合自己的架构体系。node还带来了前后端分离的尝试，如支付宝前后端分离的思考与实践。&lt;/li&gt;
+  &lt;li&gt;这一年，无线端迅猛增加，pc向无线转型的开始，h5兴起，大家争相all in无线。&lt;/li&gt;
+  &lt;li&gt;这一年，也是前端框架发展滞后的一年，只有Angular还在发挥着余热，阿里还停留在kissy时代，也就可以想象接下来一年的react和vue是多么的理所当然。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;15年&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;这一年，是node成熟，落地，大规模使用的一年。&lt;/li&gt;
+  &lt;li&gt;这一年，也是react兴起，顺理成章的弥补了框架薄弱的一环，解决了前端高度组件化，可维护性与降低性能的矛盾，同时兼顾了两者。&lt;/li&gt;
+  &lt;li&gt;这一年，react-native初露头角，react-native是前端寻求突破，打开壁垒的一次尝试。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;16年&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;历史总是惊人的相似这一年是react，vue成熟，落地，大规模推广使用的一年，h5前端生态和体系已趋于稳定。&lt;/li&gt;
+  &lt;li&gt;这一年，react-native在被各种尝试。&lt;/li&gt;
+  &lt;li&gt;这一年，也是weex兴起的一年，weex开源，天猫双十一weex的大规模使用。&lt;/li&gt;
+  &lt;li&gt;这一年，直播，VR开发初露头角。&lt;/li&gt;
+  &lt;li&gt;这一年，微信小程序又给我们带来了新的可能。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;17年，哪些是意料之中，又会有怎样的惊喜。。。。。。&lt;/h3&gt;
+
+&lt;p&gt;—— 后记于 2017.01.01&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 09 Feb 2017 20:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/02/09/fe-2016/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/02/09/fe-2016/</guid>
+        
+        <category>前端</category>
+        
+        
+      </item>
     
       <item>
         <title>Hello 2017</title>

@@ -3,7 +3,7 @@ layout:     post
 title:      "Hello 2017"
 subtitle:   " \"Bye 16，Hi 17\""
 date:       2017-01-01 12:00:00
-author:     "Hux"
+author:     "hengfei"
 header-img: "img/post-bg-2015.jpg"
 catalog: true
 tags:
