@@ -24,6 +24,9 @@ body, html {
 	margin: 0 auto;
 	padding: 0 1.375em;
 }
+.head-logo{
+	border-radius: 50%;
+}
 
 @font-face {
 	font-family: 'huxico';
