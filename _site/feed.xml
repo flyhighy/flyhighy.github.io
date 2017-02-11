@@ -5,9 +5,76 @@
     <description>前端开发小菜</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 09 Feb 2017 20:47:39 +0800</pubDate>
-    <lastBuildDate>Thu, 09 Feb 2017 20:47:39 +0800</lastBuildDate>
+    <pubDate>Sat, 11 Feb 2017 23:37:28 +0800</pubDate>
+    <lastBuildDate>Sat, 11 Feb 2017 23:37:28 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>前端组件化的一点思考</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;“must do it ”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;说在前面&lt;/h3&gt;
+&lt;p&gt;近两年组件化也成为一个热词，动不动就页面组件化重构，好像没做过组件化都不意思说自己是做前端的，那么组件到底是如何定义的呢？组件化又解决的是什么问题？&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;什么是组件&lt;/h3&gt;
+&lt;p&gt;都在谈组件，那么组件到底该如何定义？我认为组件分为以下两种&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;基础组件
+    &lt;ul&gt;
+      &lt;li&gt;基础组件即无特定逻辑，例如按钮组件&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;特定组件
+    &lt;ul&gt;
+      &lt;li&gt;特定组件相反有一定特定逻辑，仅适合某些场景，我们经常称之业务组件&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;但是这些组件一定是相互独立，可移植。&lt;/p&gt;
+
+&lt;p&gt;最近了解到身边同学做的一些页面组件化，其实就是将页面划分为小的模块，前后端约定这些模块数据格式，其目的是通过拆分将页面的复杂度降低，减少业务逻辑间的相互影响。我认为这并不是真正的组件，只能成为模块。&lt;/p&gt;
+
+&lt;p&gt;最后一句话阐述组件，组件是完成某些特定功能，可直接移植，有对外提供的api，入参&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;组件化的意义&lt;/h3&gt;
+
+&lt;p&gt;在我看来组件化主要有以下意义&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;降低页面的复杂度，增强页面的可维护性&lt;/li&gt;
+  &lt;li&gt;可减少重复开发或者是复制，粘贴的成本，做到代码的复用&lt;/li&gt;
+  &lt;li&gt;执行同一个标准，站点保持风格统一&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;技术的发展对组件化的影响&lt;/h3&gt;
+
+&lt;p&gt;从前几年的cmd，amd规范的定义，以及angular，kissy等框架的流行，组件化以及开始慢慢的出现，只不过那时候的组件仅限于特别基础的组件，例如slider，input等！而且组件开发的规范完全凭作者的想法和功底，并没有一个严格的标准，导致组件质量良莠不齐，那时候bower还是作为组件管理工具&lt;/p&gt;
+
+&lt;p&gt;近两年npm的普及，以及react，vue等颠覆以往html，css，js分离的思路的mvvm，mvc框架的出现，让前端组件化变得更加容易一些，因为react，vue的组件可以包含dom渲染部分，这就减少了组件接入的成本，使用者只需要关心组件暴露出的入参和api是怎样？其他dom的渲染，事件的绑定都在组件内完成&lt;/p&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;组件化面临的痛点&lt;/h3&gt;
+
+&lt;p&gt;我们经常会遇到这样的问题，明明组件的样式，交互完全符合页面的需求，但是服务端返回的数据结构或者字段名跟组件所需要的对不上，要是强行使用，则需要前端做一层数据的处理，这样一是影响性能，二是不太好维护，所以大多数情况下我们会选择fork一份组件代码改一下&lt;/p&gt;
+
+&lt;p&gt;fork一份的坏处显而易见，重复开发，新功能增加不能直接升级复用，各干各的，整体风格无法完全统一&lt;/p&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;结语&lt;/h3&gt;
+
+&lt;p&gt;就现阶段来看，组件化是将还是一个长期探索的方向，探索如何将组件复用率达到最大化，组件的粒度该做到多细致？希望能有令人惊喜的突破&lt;/p&gt;
+
+&lt;p&gt;—— 后记于 2017.02.10&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 10 Feb 2017 20:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/02/10/cmp/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/02/10/cmp/</guid>
+        
+        <category>前端</category>
+        
+        
+      </item>
     
       <item>
         <title>前端这几年</title>
