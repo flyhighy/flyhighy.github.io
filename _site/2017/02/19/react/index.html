@@ -10,7 +10,7 @@
     <meta name="keywords"  content="王恒飞, 承荫, 阿里, 博客, 个人网站, 互联网, 前端, 设计, 产品">
     <meta name="theme-color" content="#000000">
     
-    <title>前端组件化的一点思考 - 王恒飞的博客 | flyhighly Blog</title>
+    <title>浅谈react - 王恒飞的博客 | flyhighly Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2017/02/10/cmp/">
+    <link rel="canonical" href="http://localhost:4000/2017/02/19/react/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -177,12 +177,12 @@
                         <a class="tag" href="/tags/#前端" title="前端">前端</a>
                         
                     </div>
-                    <h1>前端组件化的一点思考</h1>
+                    <h1>浅谈react</h1>
                     
                     
-                    <h2 class="subheading"> "components"</h2>
+                    <h2 class="subheading"> "框架"</h2>
                     
-                    <span class="meta">Posted by hengfei on February 10, 2017</span>
+                    <span class="meta">Posted by hengfei on February 19, 2017</span>
                 </div>
             </div>
         </div>
@@ -200,60 +200,85 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<blockquote>
-  <p>“must do it ”</p>
+				<p>要说近两年最火的技术一定是前端开发，而论前端最火的框架，我认为非react莫属</p>
+<h3 id="react">react是什么？</h3>
+<blockquote>
+  <p>A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES</p>
 </blockquote>
 
-<h3 id="section">说在前面</h3>
-<p>近两年组件化也成为一个热词，动不动就页面组件化重构，好像没做过组件化都不意思说自己是做前端的，那么组件到底是如何定义的呢？组件化又解决的是什么问题？</p>
+<font color="red">一个构建ui的JavaScript库</font>
+<p>这是facebook官方对react的解释，很多人认为fb的初衷已经很明确，react更倾向于ui的构建，不擅长或者不应该做较复杂的逻辑运算，而我认为ui及前端，前端也可以有复杂的逻辑，例如表单页面
+其实react就是一个mvc的前端框架，一个比jquery更加高级的框架</p>
 
-<h3 id="section-1">什么是组件</h3>
-<p>都在谈组件，那么组件到底该如何定义？我认为组件分为以下两种</p>
+<h3 id="react-1">react的特点</h3>
+
 <ul>
-  <li>基础组件
+  <li>函数式编程，jsx
     <ul>
-      <li>基础组件即无特定逻辑，例如按钮组件</li>
+      <li>以往的理念基本都是html，css，js分离，减少js对dom的操作 而jsx语法的出现彻底颠覆这一理念，dom的渲染几乎完全通过js插入</li>
     </ul>
   </li>
-  <li>特定组件
+  <li>virtual dom
     <ul>
-      <li>特定组件相反有一定特定逻辑，仅适合某些场景，我们经常称之业务组件</li>
+      <li>了解前端的都知道，js操作dom是非常消耗性能的，所以要尽量避免这一操作，但是react的函数式编程恰恰与之相悖，所以为了减少对性能的消耗，virtual dom应景而生，通过这一算法大大提高react的性能，成为其成功的决定性因素之一</li>
+    </ul>
+  </li>
+  <li>状态机
+    <ul>
+      <li>状态机可以说是react的心脏，也就是mvc中的model，视图层的构建完全受其控制，新老状态机的数据的diff是virtual dom的基本原理</li>
     </ul>
   </li>
 </ul>
 
-<p>但是这些组件一定是相互独立，可移植。</p>
+<p>jsx，virtual dom，状态机这三者相辅相成，造就了react这一颠覆性的框架</p>
 
-<p>最近了解到身边同学做的一些页面组件化，其实就是将页面划分为小的模块，前后端约定这些模块数据格式，其目的是通过拆分将页面的复杂度降低，减少业务逻辑间的相互影响。我认为应该成为模块化而不是组件化。</p>
+<h3 id="react-2">react成功的关键</h3>
 
-<p>最后一句话阐述组件，组件是完成某些特定功能，可直接移植，有对外提供的api，入参</p>
+<p>如果说一个事物的存在必定有其存在的意义，那么成功的事物绝壁有极大地存在意义，react的成功就是因为其解决了前端几个极大的痛点</p>
 
-<h3 id="section-2">组件化的意义</h3>
-
-<p>在我看来组件化主要有以下意义</p>
 <ul>
-  <li>降低页面的复杂度，增强页面的可维护性</li>
-  <li>可减少重复开发或者是复制，粘贴的成本，做到代码的复用</li>
-  <li>执行同一个标准，站点保持风格统一</li>
+  <li>
+    <p>组件化
+前端组件化的意义我相信每个做过系统前端的人都知道，想了解前端组件化，可以参考之前写过的<a href="http://flyhighly.com/2017/02/10/cmp/">前端组件化的一点思考</a>这篇文章，react的函数式变成让组件分离变得更加简单，由于dom的渲染事件的绑定，以及css都在一个组件完成，使组件封装更加彻底，组件引用也更加简单</p>
+  </li>
+  <li>
+    <p>性能提升
+有人认为即使是有了virtual dom，react的性能也不可能比html渲染好，比较react无可避免的对dom操作
+页面仅仅是html渲染那么简单吗？现在哪个页面或多或少没有些酷炫的交互，而这些交互无可避免要通过js实现，对于技术牛逼的开发，通过传统方式对一个的页面开发，可以将其性能做到极致，但是并不是每个开发都会将性能做到最好，而且对于一些复杂交互的页面及时做的极致，性能也不见得有多好，这是html，js分离的模式导致
+react的出现可以减少前端性能优化的复杂度，大部分页面照着react常规的开发，性能都不会太差</p>
+  </li>
+  <li>
+    <p>开发体验的提升
+js，htm，css的融合，使得页面开发不用在html，js，css文件来回切换，页面组件的拆分，引入也变得十分简单，前端开发的体验可谓是达到历史之最，这也是很多人对之着迷的原因</p>
+  </li>
 </ul>
 
-<h3 id="section-3">技术的发展对组件化的影响</h3>
+<h3 id="section">社区的发展</h3>
 
-<p>从前几年的cmd，amd规范的定义，以及angular，kissy等框架的流行，组件化以及开始慢慢的出现，只不过那时候的组件仅限于特别基础的组件，例如slider，input等！而且组件开发的规范完全凭作者的想法和功底，并没有一个严格的标准，导致组件质量良莠不齐，那时候bower还是作为组件管理工具</p>
+<p>作为前端近两年社区最活跃的技术，基于react的工具，组件库的建设日渐完善，例如webpack打包最初也是为react量身定做，而组件库最有代表性的莫过于蚂蚁金服的<a href="https://ant.design/index-cn">ant design</a></p>
 
-<p>近两年npm的普及，以及react，vue等颠覆以往html，css，js分离的思路的mvvm，mvc框架的出现，让前端组件化变得更加容易一些，因为react，vue的组件可以包含dom渲染部分，这就减少了组件接入的成本，使用者只需要关心组件暴露出的入参和api是怎样？其他dom的渲染，事件的绑定都在组件内完成</p>
+<h3 id="react-3">react的不足</h3>
+<p>人无完人，框架也没有完美的，react也有其不足之处</p>
+<ul>
+  <li>
+    <p>种子文件较大
+相比于jquery，kissy等框架，react的种子文件体积显得有些庞大，这与其状态机的维护，dom的管理以及virtual dom算法有关，也是可以理解的，毕竟传统方式的事件绑定和dom操作，react框架都帮忙解决了</p>
+  </li>
+  <li>
+    <p>更加黑盒
+react对于大部分开发者来说更像是一个黑盒，这样的有好有坏，好处是开发者不用关心react具体是怎么实现的，只需要编写上层的代码即可，坏处是不理解其原理无法做更深的性能优化，以及问题的排查</p>
+  </li>
+  <li>
+    <p>其他
+例如组件间的通信数据共享必须通过redux等第三方库来解决，想想也没有更好的办法，因为组件间既要隔离又要通信，只能通过中间层</p>
+  </li>
+</ul>
 
-<h3 id="section-4">组件化面临的痛点</h3>
+<h3 id="section-1">写在最后</h3>
 
-<p>我们经常会遇到这样的问题，明明组件的样式，交互完全符合页面的需求，但是服务端返回的数据结构或者字段名跟组件所需要的对不上，要是强行使用，则需要前端做一层数据的处理，这样一是影响性能，二是不太好维护，所以大多数情况下我们会选择fork一份组件代码改一下</p>
+<p>react的出现让人眼前一亮，其颠覆性的创新也是令人大呼惊奇，可以想象未来必定有其他更好的前端框架出现，而我们要做的便是挣脱束缚，积极创新，并且拥抱新的东西，让自己保持竞争力。</p>
 
-<p>fork一份的坏处显而易见，重复开发，新功能增加不能直接升级复用，各干各的，整体风格无法完全统一</p>
-
-<h3 id="section-5">结语</h3>
-
-<p>就现阶段来看，组件化是将还是一个长期探索的方向，探索如何将组件复用率达到最大化，组件的粒度该做到多细致？希望能有令人惊喜的突破</p>
-
-<p>—— 后记于 2017.02.10</p>
+<p>—— 后记于 2017.02.19</p>
 
 
 
@@ -263,16 +288,14 @@
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2017/02/10/cmp"
-                    data-title="前端组件化的一点思考"
-                    data-url="http://localhost:4000/2017/02/10/cmp/"
+                    data-thread-key="/2017/02/19/react"
+                    data-title="浅谈react"
+                    data-url="http://localhost:4000/2017/02/19/react/"
                     data-images="http://localhost:4000/img/post-bg-2015.jpg"
-                    data-content="
-  “must do it ”
+                    data-content="要说近两年最火的技术一定是前端开发，而论前端最火的框架，我认为非react莫属
+react是什么？
 
-
-说在前面
-近两年组件化也成为一个热词，动不动就页面组件化重构，好像没做过组件化都不意思说自己是做前端的，那么组件到底... | 王恒飞的博客 | flyhighly Blog " >
+  A JAVASCRIPT LIBRARY FOR... | 王恒飞的博客 | flyhighly Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 
@@ -295,19 +318,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2017/02/09/fe-2016/" data-toggle="tooltip" data-placement="top" title="前端这几年">
+                        <a href="/2017/02/10/cmp/" data-toggle="tooltip" data-placement="top" title="前端组件化的一点思考">
                         Previous<br>
-                        <span>前端这几年</span>
+                        <span>前端组件化的一点思考</span>
                         </a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2017/02/19/react/" data-toggle="tooltip" data-placement="top" title="浅谈react">
-                        Next<br>
-                        <span>浅谈react</span>
-                        </a>
-                    </li>
                     
                 </ul>
 
@@ -316,9 +332,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2017/02/10/cmp"
-                        data-title="前端组件化的一点思考"
-                        data-url="http://localhost:4000/2017/02/10/cmp/" >
+                        data-thread-key="/2017/02/19/react"
+                        data-title="浅谈react"
+                        data-url="http://localhost:4000/2017/02/19/react/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->

@@ -5,9 +5,101 @@
     <description>前端开发小菜</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 11 Feb 2017 23:37:28 +0800</pubDate>
-    <lastBuildDate>Sat, 11 Feb 2017 23:37:28 +0800</lastBuildDate>
+    <pubDate>Sun, 19 Feb 2017 22:07:24 +0800</pubDate>
+    <lastBuildDate>Sun, 19 Feb 2017 22:07:24 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>浅谈react</title>
+        <description>&lt;p&gt;要说近两年最火的技术一定是前端开发，而论前端最火的框架，我认为非react莫属&lt;/p&gt;
+&lt;h3 id=&quot;react&quot;&gt;react是什么？&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;font color=&quot;red&quot;&gt;一个构建ui的JavaScript库&lt;/font&gt;
+&lt;p&gt;这是facebook官方对react的解释，很多人认为fb的初衷已经很明确，react更倾向于ui的构建，不擅长或者不应该做较复杂的逻辑运算，而我认为ui及前端，前端也可以有复杂的逻辑，例如表单页面
+其实react就是一个mvc的前端框架，一个比jquery更加高级的框架&lt;/p&gt;
+
+&lt;h3 id=&quot;react-1&quot;&gt;react的特点&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;函数式编程，jsx
+    &lt;ul&gt;
+      &lt;li&gt;以往的理念基本都是html，css，js分离，减少js对dom的操作 而jsx语法的出现彻底颠覆这一理念，dom的渲染几乎完全通过js插入&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;virtual dom
+    &lt;ul&gt;
+      &lt;li&gt;了解前端的都知道，js操作dom是非常消耗性能的，所以要尽量避免这一操作，但是react的函数式编程恰恰与之相悖，所以为了减少对性能的消耗，virtual dom应景而生，通过这一算法大大提高react的性能，成为其成功的决定性因素之一&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;状态机
+    &lt;ul&gt;
+      &lt;li&gt;状态机可以说是react的心脏，也就是mvc中的model，视图层的构建完全受其控制，新老状态机的数据的diff是virtual dom的基本原理&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;jsx，virtual dom，状态机这三者相辅相成，造就了react这一颠覆性的框架&lt;/p&gt;
+
+&lt;h3 id=&quot;react-2&quot;&gt;react成功的关键&lt;/h3&gt;
+
+&lt;p&gt;如果说一个事物的存在必定有其存在的意义，那么成功的事物绝壁有极大地存在意义，react的成功就是因为其解决了前端几个极大的痛点&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;组件化
+前端组件化的意义我相信每个做过系统前端的人都知道，想了解前端组件化，可以参考之前写过的&lt;a href=&quot;http://flyhighly.com/2017/02/10/cmp/&quot;&gt;前端组件化的一点思考&lt;/a&gt;这篇文章，react的函数式变成让组件分离变得更加简单，由于dom的渲染事件的绑定，以及css都在一个组件完成，使组件封装更加彻底，组件引用也更加简单&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;性能提升
+有人认为即使是有了virtual dom，react的性能也不可能比html渲染好，比较react无可避免的对dom操作
+页面仅仅是html渲染那么简单吗？现在哪个页面或多或少没有些酷炫的交互，而这些交互无可避免要通过js实现，对于技术牛逼的开发，通过传统方式对一个的页面开发，可以将其性能做到极致，但是并不是每个开发都会将性能做到最好，而且对于一些复杂交互的页面及时做的极致，性能也不见得有多好，这是html，js分离的模式导致
+react的出现可以减少前端性能优化的复杂度，大部分页面照着react常规的开发，性能都不会太差&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;开发体验的提升
+js，htm，css的融合，使得页面开发不用在html，js，css文件来回切换，页面组件的拆分，引入也变得十分简单，前端开发的体验可谓是达到历史之最，这也是很多人对之着迷的原因&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;社区的发展&lt;/h3&gt;
+
+&lt;p&gt;作为前端近两年社区最活跃的技术，基于react的工具，组件库的建设日渐完善，例如webpack打包最初也是为react量身定做，而组件库最有代表性的莫过于蚂蚁金服的&lt;a href=&quot;https://ant.design/index-cn&quot;&gt;ant design&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;react-3&quot;&gt;react的不足&lt;/h3&gt;
+&lt;p&gt;人无完人，框架也没有完美的，react也有其不足之处&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;种子文件较大
+相比于jquery，kissy等框架，react的种子文件体积显得有些庞大，这与其状态机的维护，dom的管理以及virtual dom算法有关，也是可以理解的，毕竟传统方式的事件绑定和dom操作，react框架都帮忙解决了&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;更加黑盒
+react对于大部分开发者来说更像是一个黑盒，这样的有好有坏，好处是开发者不用关心react具体是怎么实现的，只需要编写上层的代码即可，坏处是不理解其原理无法做更深的性能优化，以及问题的排查&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;其他
+例如组件间的通信数据共享必须通过redux等第三方库来解决，想想也没有更好的办法，因为组件间既要隔离又要通信，只能通过中间层&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;写在最后&lt;/h3&gt;
+
+&lt;p&gt;react的出现让人眼前一亮，其颠覆性的创新也是令人大呼惊奇，可以想象未来必定有其他更好的前端框架出现，而我们要做的便是挣脱束缚，积极创新，并且拥抱新的东西，让自己保持竞争力。&lt;/p&gt;
+
+&lt;p&gt;—— 后记于 2017.02.19&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 19 Feb 2017 20:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/02/19/react/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/02/19/react/</guid>
+        
+        <category>前端</category>
+        
+        
+      </item>
     
       <item>
         <title>前端组件化的一点思考</title>
@@ -35,7 +127,7 @@
 
 &lt;p&gt;但是这些组件一定是相互独立，可移植。&lt;/p&gt;
 
-&lt;p&gt;最近了解到身边同学做的一些页面组件化，其实就是将页面划分为小的模块，前后端约定这些模块数据格式，其目的是通过拆分将页面的复杂度降低，减少业务逻辑间的相互影响。我认为这并不是真正的组件，只能成为模块。&lt;/p&gt;
+&lt;p&gt;最近了解到身边同学做的一些页面组件化，其实就是将页面划分为小的模块，前后端约定这些模块数据格式，其目的是通过拆分将页面的复杂度降低，减少业务逻辑间的相互影响。我认为应该成为模块化而不是组件化。&lt;/p&gt;
 
 &lt;p&gt;最后一句话阐述组件，组件是完成某些特定功能，可直接移植，有对外提供的api，入参&lt;/p&gt;
 
