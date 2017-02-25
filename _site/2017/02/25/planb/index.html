@@ -10,7 +10,7 @@
     <meta name="keywords"  content="王恒飞, 承荫, 阿里, 博客, 个人网站, 互联网, 前端, 设计, 产品">
     <meta name="theme-color" content="#000000">
     
-    <title>前端组件化的一点思考 - 王恒飞的博客 | flyhighly Blog</title>
+    <title>时刻保持危机感 - 王恒飞的博客 | flyhighly Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2017/02/10/cmp/">
+    <link rel="canonical" href="http://localhost:4000/2017/02/25/planb/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -174,15 +174,15 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#前端" title="前端">前端</a>
+                        <a class="tag" href="/tags/#感悟" title="感悟">感悟</a>
                         
                     </div>
-                    <h1>前端组件化的一点思考</h1>
+                    <h1>时刻保持危机感</h1>
                     
                     
-                    <h2 class="subheading"> "components"</h2>
+                    <h2 class="subheading"> "感悟"</h2>
                     
-                    <span class="meta">Posted by hengfei on February 10, 2017</span>
+                    <span class="meta">Posted by hengfei on February 25, 2017</span>
                 </div>
             </div>
         </div>
@@ -200,60 +200,29 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<blockquote>
-  <p>“must do it ”</p>
+				<p>昨天在网上看到了一篇“愤激贴”，女主是公司8年的老员工，结果上级25秒的手机通话宣告她失业了，接下来是账号被封，卡被冻结，离职流程迅速被走完。且不知道具体细节或者内幕如何，但是这件事带给我了很大的震撼。我意识到，作为一个打工仔，我们随时面临着被辞退。</p>
+
+<p><img style="margin:0" src="../../../../img/weijigan.jpeg" /></p>
+
+<blockquote>
+  <p>对于人生来说，你现在的职业就是A计划，应该努力追求职业成功。但是，也要做好两手准备，万一A计划失败，还需要一个B计划，对自己的退路有所安排。</p>
 </blockquote>
 
-<h3 id="section">说在前面</h3>
-<p>近两年组件化也成为一个热词，动不动就页面组件化重构，好像没做过组件化都不意思说自己是做前端的，那么组件到底是如何定义的呢？组件化又解决的是什么问题？</p>
+<p>这是阮一峰老师的<a href="http://www.ruanyifeng.com/blog/2016/03/plan-b.html">你的B计划在哪里？</a>的一段话，看到内网这位女主的经历，我首先想到了这篇文章，在现实工作中，我们有没有制定自己的plan B？反正我是没有</p>
 
-<h3 id="section-1">什么是组件</h3>
-<p>都在谈组件，那么组件到底该如何定义？我认为组件分为以下两种</p>
-<ul>
-  <li>基础组件
-    <ul>
-      <li>基础组件即无特定逻辑，例如按钮组件</li>
-    </ul>
-  </li>
-  <li>特定组件
-    <ul>
-      <li>特定组件相反有一定特定逻辑，仅适合某些场景，我们经常称之业务组件</li>
-    </ul>
-  </li>
-</ul>
+<p>我开始回忆自己的职场之路。。。</p>
 
-<p>但是这些组件一定是相互独立，可移植。</p>
+<p>我是2015年7月毕业，进入阿里巴巴，当时的我并没有迅速的进入状态，满足于自己做的一些小事，也可能是跟当时团队的发展有关，那时并没有到现在这么快的节奏</p>
 
-<p>最近了解到身边同学做的一些页面组件化，其实就是将页面划分为小的模块，前后端约定这些模块数据格式，其目的是通过拆分将页面的复杂度降低，减少业务逻辑间的相互影响。我认为应该成为模块化而不是组件化。</p>
+<p>直到实习转正的时候，虽然没有被卡，但是主管的评价是没有形成独当一面。what the fuck？这是我当时的想法，首先是自己觉得表现的还可以，其次是并为什么这三个月，不管是我的师兄还是主管都没有找我聊过这个事情。其实现在看来，事实就是只有自己对自己负责，别人只会看结果</p>
 
-<p>最后一句话阐述组件，组件是完成某些特定功能，可直接移植，有对外提供的api，入参</p>
+<p>接下来的一年多，我对自己永远是200%的要求，虽然现在我只是个小p5，但是我希望对自己的p6+，甚至的p7的要求，这也是自己时刻保持危机感的一种激励方式</p>
 
-<h3 id="section-2">组件化的意义</h3>
+<p>我们没有办法控制外界的变化，但是有一条规则是永远试用的，那就是通过学习来充实自己，保持竞争力。</p>
 
-<p>在我看来组件化主要有以下意义</p>
-<ul>
-  <li>降低页面的复杂度，增强页面的可维护性</li>
-  <li>可减少重复开发或者是复制，粘贴的成本，做到代码的复用</li>
-  <li>执行同一个标准，站点保持风格统一</li>
-</ul>
+<p>是时候考虑制定自己的plan B，plan C了</p>
 
-<h3 id="section-3">技术的发展对组件化的影响</h3>
-
-<p>从前几年的cmd，amd规范的定义，以及angular，kissy等框架的流行，组件化以及开始慢慢的出现，只不过那时候的组件仅限于特别基础的组件，例如slider，input等！而且组件开发的规范完全凭作者的想法和功底，并没有一个严格的标准，导致组件质量良莠不齐，那时候bower还是作为组件管理工具</p>
-
-<p>近两年npm的普及，以及react，vue等颠覆以往html，css，js分离的思路的mvvm，mvc框架的出现，让前端组件化变得更加容易一些，因为react，vue的组件可以包含dom渲染部分，这就减少了组件接入的成本，使用者只需要关心组件暴露出的入参和api是怎样？其他dom的渲染，事件的绑定都在组件内完成</p>
-
-<h3 id="section-4">组件化面临的痛点</h3>
-
-<p>我们经常会遇到这样的问题，明明组件的样式，交互完全符合页面的需求，但是服务端返回的数据结构或者字段名跟组件所需要的对不上，要是强行使用，则需要前端做一层数据的处理，这样一是影响性能，二是不太好维护，所以大多数情况下我们会选择fork一份组件代码改一下</p>
-
-<p>fork一份的坏处显而易见，重复开发，新功能增加不能直接升级复用，各干各的，整体风格无法完全统一</p>
-
-<h3 id="section-5">结语</h3>
-
-<p>就现阶段来看，组件化是将还是一个长期探索的方向，探索如何将组件复用率达到最大化，组件的粒度该做到多细致？希望能有令人惊喜的突破</p>
-
-<p>—— 后记于 2017.02.10</p>
+<p>—— 后记于 2017.02.19</p>
 
 
 
@@ -263,16 +232,11 @@
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2017/02/10/cmp"
-                    data-title="前端组件化的一点思考"
-                    data-url="http://localhost:4000/2017/02/10/cmp/"
+                    data-thread-key="/2017/02/25/planb"
+                    data-title="时刻保持危机感"
+                    data-url="http://localhost:4000/2017/02/25/planb/"
                     data-images="http://localhost:4000/img/post-bg-2015.jpg"
-                    data-content="
-  “must do it ”
-
-
-说在前面
-近两年组件化也成为一个热词，动不动就页面组件化重构，好像没做过组件化都不意思说自己是做前端的，那么组件到底... | 王恒飞的博客 | flyhighly Blog " >
+                    data-content="昨天在网上看到了一篇“愤激贴”，女主是公司8年的老员工，结果上级25秒的手机通话宣告她失业了，接下来是账号被封，卡被冻结，离职流程迅速被走完。且不知道具体... | 王恒飞的博客 | flyhighly Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 
@@ -295,19 +259,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2017/02/09/fe-2016/" data-toggle="tooltip" data-placement="top" title="前端这几年">
-                        Previous<br>
-                        <span>前端这几年</span>
-                        </a>
-                    </li>
-                    
-                    
-                    <li class="next">
                         <a href="/2017/02/19/react/" data-toggle="tooltip" data-placement="top" title="浅谈react">
-                        Next<br>
+                        Previous<br>
                         <span>浅谈react</span>
                         </a>
                     </li>
+                    
                     
                 </ul>
 
@@ -316,9 +273,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2017/02/10/cmp"
-                        data-title="前端组件化的一点思考"
-                        data-url="http://localhost:4000/2017/02/10/cmp/" >
+                        data-thread-key="/2017/02/25/planb"
+                        data-title="时刻保持危机感"
+                        data-url="http://localhost:4000/2017/02/25/planb/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
