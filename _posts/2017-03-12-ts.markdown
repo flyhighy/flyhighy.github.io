@@ -68,3 +68,8 @@ interface不同于java用于类去实现，而作为一种自定义的复杂类�
 作为一中灵活性极大地语言，TypeScript想要让开发者特放弃这种灵活，在业界普及，几乎不太可能。所以更加期待es7或者是es8能够看到这些变化！
 
 
+### 相关参考
+- [TypeScript官方文档](http://typescript.codeplex.com/documentation)
+- [TypeScript中文文档](https://zhongsp.gitbooks.io/typescript-handbook/content/index.html)
+
+
