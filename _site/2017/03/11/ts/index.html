@@ -10,7 +10,7 @@
     <meta name="keywords"  content="王恒飞, 承荫, 阿里, 博客, 个人网站, 互联网, 前端, 设计, 产品">
     <meta name="theme-color" content="#000000">
     
-    <title>前端组件化的一点思考 - 王恒飞的博客 | flyhighly Blog</title>
+    <title>初识TypeScript - 王恒飞的博客 | flyhighly Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2017/02/10/cmp/">
+    <link rel="canonical" href="http://localhost:4000/2017/03/11/ts/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -177,12 +177,12 @@
                         <a class="tag" href="/tags/#前端" title="前端">前端</a>
                         
                     </div>
-                    <h1>前端组件化的一点思考</h1>
+                    <h1>初识TypeScript</h1>
                     
                     
-                    <h2 class="subheading"> "components"</h2>
+                    <h2 class="subheading"> "ts"</h2>
                     
-                    <span class="meta">Posted by hengfei on February 10, 2017</span>
+                    <span class="meta">Posted by hengfei on March 11, 2017</span>
                 </div>
             </div>
         </div>
@@ -200,60 +200,76 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<blockquote>
-  <p>“must do it ”</p>
+				<h3 id="typescript">什么是TypeScript</h3>
+<blockquote>
+  <p>TypeScript，简称ts，是微软开发的一个JavaScript转译语言，且是JavaScript的超集，最终将会编译为JavaScript语言</p>
 </blockquote>
 
-<h3 id="section">说在前面</h3>
-<p>近两年组件化也成为一个热词，动不动就页面组件化重构，好像没做过组件化都不意思说自己是做前端的，那么组件到底是如何定义的呢？组件化又解决的是什么问题？</p>
-
-<h3 id="section-1">什么是组件</h3>
-<p>都在谈组件，那么组件到底该如何定义？我认为组件分为以下两种</p>
+<h3 id="section">开发准备</h3>
 <ul>
-  <li>基础组件
-    <ul>
-      <li>基础组件即无特定逻辑，例如按钮组件</li>
-    </ul>
-  </li>
-  <li>特定组件
-    <ul>
-      <li>特定组件相反有一定特定逻辑，仅适合某些场景，我们经常称之业务组件</li>
-    </ul>
+  <li>npm install -g typescript安装转译器</li>
+  <li>安装完成后我们就可以使用 TypeScript 编译器，名称叫 tsc，可将编译结果生成 js 文件，使用如下命令
+    <blockquote>
+      <p>tsc filename.ts</p>
+    </blockquote>
   </li>
 </ul>
 
-<p>但是这些组件一定是相互独立，可移植。</p>
-
-<p>最近了解到身边同学做的一些页面组件化，其实就是将页面划分为小的模块，前后端约定这些模块数据格式，其目的是通过拆分将页面的复杂度降低，减少业务逻辑间的相互影响。我认为应该成为模块化而不是组件化。</p>
-
-<p>最后一句话阐述组件，组件是完成某些特定功能，可直接移植，有对外提供的api，入参</p>
-
-<h3 id="section-2">组件化的意义</h3>
-
-<p>在我看来组件化主要有以下意义</p>
+<h3 id="ts">TS几种重要的特性</h3>
 <ul>
-  <li>降低页面的复杂度，增强页面的可维护性</li>
-  <li>可减少重复开发或者是复制，粘贴的成本，做到代码的复用</li>
-  <li>执行同一个标准，站点保持风格统一</li>
+  <li>类型注解</li>
+  <li>接口 interface</li>
+  <li>类 class</li>
+  <li>模块 module</li>
+  <li>编译时检查 properly checked</li>
 </ul>
 
-<h3 id="section-3">技术的发展对组件化的影响</h3>
+<h3 id="section-1">特性说明和示例</h3>
+<h4 id="section-2">类型注解</h4>
+<p>ts有以下几种基础类型</p>
+<ul>
+  <li>Boolean</li>
+  <li>Number</li>
+  <li>String</li>
+  <li>Array</li>
+  <li>Enum</li>
+  <li>Any</li>
+  <li>Void</li>
+</ul>
 
-<p>从前几年的cmd，amd规范的定义，以及angular，kissy等框架的流行，组件化以及开始慢慢的出现，只不过那时候的组件仅限于特别基础的组件，例如slider，input等！而且组件开发的规范完全凭作者的想法和功底，并没有一个严格的标准，导致组件质量良莠不齐，那时候bower还是作为组件管理工具</p>
+<p>ts提供类型注解用于编译时检查，是可选的，注意是<font color="red">编译时检查</font>，也就是说可以理解为是一种开发中的语法检查，对运行时是无作用的
+<img src="../../../../img/type.png" alt="示例" />
+以上定义了三个变量a，b，c。a注解是number类型，b是字符串，c没有规定类型。
+此时a，b很好理解，必须是规定的类型，编译时会对赋值类型进行检查，如果赋值为非规定类型，则会抛出以下错误
+<img src="../../../../img/typeerror.png" alt="示例" />
+对于c来说，没有定义类型，所以它可以赋值任何类型的值，tsc编译时，会对其类型进行推断，无法推断的情况下会认为它是空对象类型，{}。</p>
 
-<p>近两年npm的普及，以及react，vue等颠覆以往html，css，js分离的思路的mvvm，mvc框架的出现，让前端组件化变得更加容易一些，因为react，vue的组件可以包含dom渲染部分，这就减少了组件接入的成本，使用者只需要关心组件暴露出的入参和api是怎样？其他dom的渲染，事件的绑定都在组件内完成</p>
+<h4 id="interface">接口，interface</h4>
+<blockquote>
+  <p>TypeScript的核心原则之一就是类型检查，重点对其所有的值进行检查。及我们常说的“鸭式辩型”或者称之为“子类型结构化”，而接口正是充当了类型定义的这一角色（这里所说的类型是基础类型组成的新的自定义复杂类型），另外它还是编写代码中以及和其他项目一种极其有力的约定，或者称为规范。</p>
+</blockquote>
 
-<h3 id="section-4">组件化面临的痛点</h3>
+<p><img src="../../../../img/inter0.png" alt="示例" />
+以上示例中，printLabel函数规定参数了labelledObj必须有类型为string的label字段，编译时会对其进行检查，让我们看一下用interface时如何实现的
+<img src="../../../../img/inter1.png" alt="示例" />
+两种写法来看，用interface明显更加清晰，可靠。
+另外正如“鸭式辩型”一样，interface类型检测只会检查所要求的结构，字段是否满足，其他多余并不care，顺序也不会进行检查</p>
 
-<p>我们经常会遇到这样的问题，明明组件的样式，交互完全符合页面的需求，但是服务端返回的数据结构或者字段名跟组件所需要的对不上，要是强行使用，则需要前端做一层数据的处理，这样一是影响性能，二是不太好维护，所以大多数情况下我们会选择fork一份组件代码改一下</p>
+<p>另外下面的这种用法，表示不是强制要求，即可以没有，有的话类型必须对
+<img src="../../../../img/inter2.png" alt="示例" /></p>
 
-<p>fork一份的坏处显而易见，重复开发，新功能增加不能直接升级复用，各干各的，整体风格无法完全统一</p>
+<h4 id="class---module">类，class 和 模块 module</h4>
+<p>没有什么惊艳之处，es6已经支持class，module的写法，ts增加了一些新的特性，例如照抄java的public,private,protected的类属性的限制，以及抽象类等</p>
 
-<h3 id="section-5">结语</h3>
+<h3 id="section-3">写在最后</h3>
+<blockquote>
+  <p>JavaScript的最大优点是灵活，最大的缺点是太灵活</p>
+</blockquote>
 
-<p>就现阶段来看，组件化是将还是一个长期探索的方向，探索如何将组件复用率达到最大化，组件的粒度该做到多细致？希望能有令人惊喜的突破</p>
-
-<p>—— 后记于 2017.02.10</p>
+<p>弱类型，异常处理，动态编译造成JavaScript天生就是一门灵活的语言。好的开发者将JavaScript运用的淋漓尽致，一般的开发者被JavaScript玩弄于鼓掌之中或是停留在表皮。
+严格模式，es6的出现以及eslint的使用，都是JavaScript开发者规范其写法，以及规避异常的方式，TypeScript也不例外。类型检查，严谨的约定，清晰的结构化让TypeScript显得更加的像java那样正规，严谨。
+interface不同于java用于类去实现，而作为一种自定义的复杂类型让代码结构变得构架清晰，同时利于类型检查和模块接入，让人眼前一亮。
+作为一中灵活性极大地语言，TypeScript想要让开发者特放弃这种灵活，在业界普及，几乎不太可能。所以更加期待es7或者是es8能够看到这些变化！</p>
 
 
 
@@ -263,16 +279,13 @@
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2017/02/10/cmp"
-                    data-title="前端组件化的一点思考"
-                    data-url="http://localhost:4000/2017/02/10/cmp/"
+                    data-thread-key="/2017/03/11/ts"
+                    data-title="初识TypeScript"
+                    data-url="http://localhost:4000/2017/03/11/ts/"
                     data-images="http://localhost:4000/img/post-bg-2015.jpg"
-                    data-content="
-  “must do it ”
+                    data-content="什么是TypeScript
 
-
-说在前面
-近两年组件化也成为一个热词，动不动就页面组件化重构，好像没做过组件化都不意思说自己是做前端的，那么组件到底... | 王恒飞的博客 | flyhighly Blog " >
+  TypeScript，简称ts，是微软开发的一个JavaScript转译语言，且是JavaScript的超集，最终将会编... | 王恒飞的博客 | flyhighly Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 
@@ -295,19 +308,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2017/02/09/fe-2016/" data-toggle="tooltip" data-placement="top" title="前端这几年">
+                        <a href="/2017/02/25/planb/" data-toggle="tooltip" data-placement="top" title="时刻保持危机感">
                         Previous<br>
-                        <span>前端这几年</span>
+                        <span>时刻保持危机感</span>
                         </a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2017/02/19/react/" data-toggle="tooltip" data-placement="top" title="浅谈react">
-                        Next<br>
-                        <span>浅谈react</span>
-                        </a>
-                    </li>
                     
                 </ul>
 
@@ -316,9 +322,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2017/02/10/cmp"
-                        data-title="前端组件化的一点思考"
-                        data-url="http://localhost:4000/2017/02/10/cmp/" >
+                        data-thread-key="/2017/03/11/ts"
+                        data-title="初识TypeScript"
+                        data-url="http://localhost:4000/2017/03/11/ts/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->

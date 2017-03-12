@@ -5,9 +5,92 @@
     <description>前端开发小菜</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 25 Feb 2017 22:39:33 +0800</pubDate>
-    <lastBuildDate>Sat, 25 Feb 2017 22:39:33 +0800</lastBuildDate>
+    <pubDate>Sun, 12 Mar 2017 17:29:13 +0800</pubDate>
+    <lastBuildDate>Sun, 12 Mar 2017 17:29:13 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>初识TypeScript</title>
+        <description>&lt;h3 id=&quot;typescript&quot;&gt;什么是TypeScript&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;TypeScript，简称ts，是微软开发的一个JavaScript转译语言，且是JavaScript的超集，最终将会编译为JavaScript语言&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;开发准备&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;npm install -g typescript安装转译器&lt;/li&gt;
+  &lt;li&gt;安装完成后我们就可以使用 TypeScript 编译器，名称叫 tsc，可将编译结果生成 js 文件，使用如下命令
+    &lt;blockquote&gt;
+      &lt;p&gt;tsc filename.ts&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;ts&quot;&gt;TS几种重要的特性&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;类型注解&lt;/li&gt;
+  &lt;li&gt;接口 interface&lt;/li&gt;
+  &lt;li&gt;类 class&lt;/li&gt;
+  &lt;li&gt;模块 module&lt;/li&gt;
+  &lt;li&gt;编译时检查 properly checked&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;特性说明和示例&lt;/h3&gt;
+&lt;h4 id=&quot;section-2&quot;&gt;类型注解&lt;/h4&gt;
+&lt;p&gt;ts有以下几种基础类型&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Boolean&lt;/li&gt;
+  &lt;li&gt;Number&lt;/li&gt;
+  &lt;li&gt;String&lt;/li&gt;
+  &lt;li&gt;Array&lt;/li&gt;
+  &lt;li&gt;Enum&lt;/li&gt;
+  &lt;li&gt;Any&lt;/li&gt;
+  &lt;li&gt;Void&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ts提供类型注解用于编译时检查，是可选的，注意是&lt;font color=&quot;red&quot;&gt;编译时检查&lt;/font&gt;，也就是说可以理解为是一种开发中的语法检查，对运行时是无作用的
+&lt;img src=&quot;../../../../img/type.png&quot; alt=&quot;示例&quot; /&gt;
+以上定义了三个变量a，b，c。a注解是number类型，b是字符串，c没有规定类型。
+此时a，b很好理解，必须是规定的类型，编译时会对赋值类型进行检查，如果赋值为非规定类型，则会抛出以下错误
+&lt;img src=&quot;../../../../img/typeerror.png&quot; alt=&quot;示例&quot; /&gt;
+对于c来说，没有定义类型，所以它可以赋值任何类型的值，tsc编译时，会对其类型进行推断，无法推断的情况下会认为它是空对象类型，{}。&lt;/p&gt;
+
+&lt;h4 id=&quot;interface&quot;&gt;接口，interface&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;TypeScript的核心原则之一就是类型检查，重点对其所有的值进行检查。及我们常说的“鸭式辩型”或者称之为“子类型结构化”，而接口正是充当了类型定义的这一角色（这里所说的类型是基础类型组成的新的自定义复杂类型），另外它还是编写代码中以及和其他项目一种极其有力的约定，或者称为规范。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../img/inter0.png&quot; alt=&quot;示例&quot; /&gt;
+以上示例中，printLabel函数规定参数了labelledObj必须有类型为string的label字段，编译时会对其进行检查，让我们看一下用interface时如何实现的
+&lt;img src=&quot;../../../../img/inter1.png&quot; alt=&quot;示例&quot; /&gt;
+两种写法来看，用interface明显更加清晰，可靠。
+另外正如“鸭式辩型”一样，interface类型检测只会检查所要求的结构，字段是否满足，其他多余并不care，顺序也不会进行检查&lt;/p&gt;
+
+&lt;p&gt;另外下面的这种用法，表示不是强制要求，即可以没有，有的话类型必须对
+&lt;img src=&quot;../../../../img/inter2.png&quot; alt=&quot;示例&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;class---module&quot;&gt;类，class 和 模块 module&lt;/h4&gt;
+&lt;p&gt;没有什么惊艳之处，es6已经支持class，module的写法，ts增加了一些新的特性，例如照抄java的public,private,protected的类属性的限制，以及抽象类等&lt;/p&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;写在最后&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;JavaScript的最大优点是灵活，最大的缺点是太灵活&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;弱类型，异常处理，动态编译造成JavaScript天生就是一门灵活的语言。好的开发者将JavaScript运用的淋漓尽致，一般的开发者被JavaScript玩弄于鼓掌之中或是停留在表皮。
+严格模式，es6的出现以及eslint的使用，都是JavaScript开发者规范其写法，以及规避异常的方式，TypeScript也不例外。类型检查，严谨的约定，清晰的结构化让TypeScript显得更加的像java那样正规，严谨。
+interface不同于java用于类去实现，而作为一种自定义的复杂类型让代码结构变得构架清晰，同时利于类型检查和模块接入，让人眼前一亮。
+作为一中灵活性极大地语言，TypeScript想要让开发者特放弃这种灵活，在业界普及，几乎不太可能。所以更加期待es7或者是es8能够看到这些变化！&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 11 Mar 2017 20:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/03/11/ts/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/03/11/ts/</guid>
+        
+        <category>前端</category>
+        
+        
+      </item>
     
       <item>
         <title>时刻保持危机感</title>
