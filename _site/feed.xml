@@ -5,9 +5,84 @@
     <description>前端开发小菜</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 12 Mar 2017 17:29:13 +0800</pubDate>
-    <lastBuildDate>Sun, 12 Mar 2017 17:29:13 +0800</lastBuildDate>
+    <pubDate>Sun, 19 Mar 2017 21:50:13 +0800</pubDate>
+    <lastBuildDate>Sun, 19 Mar 2017 21:50:13 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>egg入门</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;写在前面&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;上一次使用node搭建web服务还要追溯到大四的时候，那时候最风靡的框架当属express，短短两年express却已经被新起的koa替代，回想起来，恍如隔世，只能说前端变化太快了&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;egg&quot;&gt;egg是什么？&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Egg.js 为企业级框架和应用而生，我们希望由 Egg.js 孕育出更多上层框架，帮助开发团队和开发人员降低开发和维护成本&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;以上是官方对egg的定义，egg是阿里的一个开源项目，以koa为基础，做了封装和扩展&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;环境搭建&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;node版本要求6.x&lt;/li&gt;
+  &lt;li&gt;node –version检测版本号&lt;/li&gt;
+  &lt;li&gt;通过安装sudo npm install -g n，来管理node版本&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;亲测6.0.0好使&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;安装egg，初始化项目
+    &lt;ul&gt;
+      &lt;li&gt;npm i egg-init -g&lt;/li&gt;
+      &lt;li&gt;egg-init egg-example –type=simple&lt;/li&gt;
+      &lt;li&gt;cd egg-example&lt;/li&gt;
+      &lt;li&gt;npm i&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;启动项目
+    &lt;ul&gt;
+      &lt;li&gt;npm run dev&lt;/li&gt;
+      &lt;li&gt;在浏览器中打开 localhost:7001&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;目录结构&lt;/h3&gt;
+
+&lt;p&gt;egg-project&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;index.js 用于自定义启动时的初始化工作，也就是项目启动的入口&lt;/li&gt;
+  &lt;li&gt;config，配置文件目录&lt;/li&gt;
+  &lt;li&gt;app核心目录，也是我们经常操作的目录
+    &lt;ul&gt;
+      &lt;li&gt;router，设置路由，及访问url时对应的规则，服务分发&lt;/li&gt;
+      &lt;li&gt;controller，用于解析请求，并返回结果&lt;/li&gt;
+      &lt;li&gt;public，用于存放静态资源，例如css，js等&lt;/li&gt;
+      &lt;li&gt;view，用于存放渲染模板&lt;/li&gt;
+      &lt;li&gt;middleware，用于编写中间件&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;其他请参考&lt;a href=&quot;https://eggjs.org/zh-cn/basics/structure.html&quot;&gt;egg目录结构说明&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;思考&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;从express到koa，egg，框架为开发者做的越来越多，固定的目录结构，规则。给我的感觉是node框架越来越像java等成熟框架，开发者只需要照着规则做就行，这也许就是js的未来，越来越专业，越来越呆板！&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;—— 后记于 2017.03.19&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 19 Mar 2017 20:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/03/19/egg1-2017/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/03/19/egg1-2017/</guid>
+        
+        <category>前端</category>
+        
+        
+      </item>
     
       <item>
         <title>初识TypeScript</title>
@@ -81,6 +156,12 @@
 严格模式，es6的出现以及eslint的使用，都是JavaScript开发者规范其写法，以及规避异常的方式，TypeScript也不例外。类型检查，严谨的约定，清晰的结构化让TypeScript显得更加的像java那样正规，严谨。
 interface不同于java用于类去实现，而作为一种自定义的复杂类型让代码结构变得构架清晰，同时利于类型检查和模块接入，让人眼前一亮。
 作为一中灵活性极大地语言，TypeScript想要让开发者特放弃这种灵活，在业界普及，几乎不太可能。所以更加期待es7或者是es8能够看到这些变化！&lt;/p&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;相关参考&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://typescript.codeplex.com/documentation&quot;&gt;TypeScript官方文档&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://zhongsp.gitbooks.io/typescript-handbook/content/index.html&quot;&gt;TypeScript中文文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 </description>
         <pubDate>Sat, 11 Mar 2017 20:00:00 +0800</pubDate>

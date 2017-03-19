@@ -1,0 +1,67 @@
+---
+layout:     post
+title:      "egg入门"
+subtitle:   " \"HI egg\""
+date:       2017-03-19 12:00:00
+author:     "hengfei"
+header-img: "img/post-bg-2015.jpg"
+catalog: true
+tags:
+    - 前端
+---
+
+### 写在前面
+- 上一次使用node搭建web服务还要追溯到大四的时候，那时候最风靡的框架当属express，短短两年express却已经被新起的koa替代，回想起来，恍如隔世，只能说前端变化太快了
+
+### egg是什么？
+> Egg.js 为企业级框架和应用而生，我们希望由 Egg.js 孕育出更多上层框架，帮助开发团队和开发人员降低开发和维护成本
+
+以上是官方对egg的定义，egg是阿里的一个开源项目，以koa为基础，做了封装和扩展
+
+### 环境搭建
+
+
+-  node版本要求6.x
+  * node --version检测版本号
+  * 通过安装sudo npm install -g n，来管理node版本
+  * 亲测6.0.0好使
+
+- 安装egg，初始化项目
+  * npm i egg-init -g
+  * egg-init egg-example --type=simple
+  * cd egg-example 
+  * npm i
+  
+- 启动项目
+  * npm run dev
+  * 在浏览器中打开 localhost:7001
+  
+### 目录结构
+
+
+egg-project
+
+* index.js 用于自定义启动时的初始化工作，也就是项目启动的入口
+* config，配置文件目录
+* app核心目录，也是我们经常操作的目录
+  * router，设置路由，及访问url时对应的规则，服务分发
+  * controller，用于解析请求，并返回结果
+  * public，用于存放静态资源，例如css，js等
+  * view，用于存放渲染模板
+  * middleware，用于编写中间件
+  
+* 其他请参考[egg目录结构说明](https://eggjs.org/zh-cn/basics/structure.html)
+
+### 思考
+* 从express到koa，egg，框架为开发者做的越来越多，固定的目录结构，规则。给我的感觉是node框架越来越像java等成熟框架，开发者只需要照着规则做就行，这也许就是js的未来，越来越专业，越来越呆板！
+
+
+
+
+
+
+
+
+—— 后记于 2017.03.19
+
+
