@@ -10,7 +10,7 @@
     <meta name="keywords"  content="王恒飞, 承荫, 阿里, 博客, 个人网站, 互联网, 前端, 设计, 产品">
     <meta name="theme-color" content="#000000">
     
-    <title>前端这几年 - 王恒飞的博客 | flyhighly Blog</title>
+    <title>前端本地存储那些事 - 王恒飞的博客 | flyhighly Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2017/02/09/fe-2016/">
+    <link rel="canonical" href="http://localhost:4000/2017/03/24/save-2017/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -177,12 +177,12 @@
                         <a class="tag" href="/tags/#前端" title="前端">前端</a>
                         
                     </div>
-                    <h1>前端这几年</h1>
+                    <h1>前端本地存储那些事</h1>
                     
                     
-                    <h2 class="subheading"> "杂谈"</h2>
+                    <h2 class="subheading"> "cookie localStorage sessionStorage"</h2>
                     
-                    <span class="meta">Posted by hengfei on February 9, 2017</span>
+                    <span class="meta">Posted by hengfei on March 24, 2017</span>
                 </div>
             </div>
         </div>
@@ -200,32 +200,93 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h3 id="section">14年</h3>
+				<h3 id="section">前言</h3>
+<p>本地存储作为前端一个常见的功能，现阶段已经有很多场景，例如localStorage缓存静态资源已达到秒出的效果，利用localStorage或者sessionStorage实现两个页面间数据的回传等等。cookie，sessionStorage，localStorage作为前端本地存储的三大法宝，我们有必要精通他们的使用方法</p>
+
+<h3 id="cookie">cookie</h3>
 <ul>
-  <li>这一年，node是最火了，也因为node，前端的生态（包管理npm，bower，脚手架yo，打包工具grunt，gulp）在这一年迅速建立起来，大多数公司和团队形成了适合自己的架构体系。node还带来了前后端分离的尝试，如支付宝前后端分离的思考与实践。</li>
-  <li>这一年，无线端迅猛增加，pc向无线转型的开始，h5兴起，大家争相all in无线。</li>
-  <li>这一年，也是前端框架发展滞后的一年，只有Angular还在发挥着余热，阿里还停留在kissy时代，也就可以想象接下来一年的react和vue是多么的理所当然。</li>
+  <li>什么是cookie
+    <blockquote>
+      <p>cookie 是存储于访问者的计算机中的变量。每当同一台计算机通过浏览器请求某个页面时，就会发送这个 cookie。你可以使用 JavaScript 来创建和取回 cookie 的值。</p>
+    </blockquote>
+  </li>
+  <li>如何使用cookie
+    <ul>
+      <li>前端可直接查看或者操作本域名下的cookie，如下示例</li>
+      <li>查看cookie
+        <ul>
+          <li>打开任意页面，在控制台输入document.cookie，可以查看该域名下的左右cookie内容</li>
+        </ul>
+      </li>
+      <li>新增cookie
+        <ul>
+          <li>通过js命令document.cookie = name=value;expires=expiresDate，新增一条cookie记录，其中那么为要设置cookie名称，value为cookie的值，expires为过期时间</li>
+        </ul>
+      </li>
+      <li>删除一条cookie
+        <ul>
+          <li>将该条cookie的过期时间设置为&lt;=0的数</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>cookie的域名
+    <ul>
+      <li>每一个页面只能访问改页面下的cookie，例如www.taobao.com页面不能访问www.baidu.com下的cookie</li>
+      <li>一般情况下二级域名cookie和一级域名的cookie也不能共享，因为域名不完全一致，例如trip.taobao.com不能直接共享www.taobao.com的cookie，但是如果设置了domain为taobao.com则可以实现共享
+        <ul>
+          <li>document.cookie = name=value;expires=expiresDate;domain=taobao.com</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>cookie的限制
+    <ul>
+      <li>由于每次页面向服务端发起请求都会带上cookie，所以cookie不宜过大</li>
+    </ul>
+  </li>
 </ul>
 
-<h3 id="section-1">15年</h3>
+<h3 id="localstoragesessionstorage">localstorage和sessionStorage</h3>
 <ul>
-  <li>这一年，是node成熟，落地，大规模使用的一年。</li>
-  <li>这一年，也是react兴起，顺理成章的弥补了框架薄弱的一环，解决了前端高度组件化，可维护性与降低性能的矛盾，同时兼顾了两者。</li>
-  <li>这一年，react-native初露头角，react-native是前端寻求突破，打开壁垒的一次尝试。</li>
+  <li>什么是localStorage和sessionStorage
+    <blockquote>
+      <p>HTML5 提供了两种在客户端存储数据的新方法，用于解决cookie不能存储大规模数据问题</p>
+    </blockquote>
+  </li>
+  <li>使用方法
+    <ul>
+      <li>localStorage和sessionStorage的使用方法几乎是完全相同，通过以下api进行增，删，改，查
+        <ul>
+          <li>setItem，增或改</li>
+          <li>removeItem，删除单个，clear删除全部</li>
+          <li>getItem,查</li>
+        </ul>
+      </li>
+      <li>但是由于localStorage和sessionStorage实际上使用的时候是一个js对象，所以可以通过.操作符和[]进行操作</li>
+    </ul>
+  </li>
+  <li>域名限制
+    <ul>
+      <li>localstorage和sessionStorage都是只能访问当前域名下的，并且域名必须完全一致，包括协议</li>
+    </ul>
+  </li>
+  <li>localstorage和sessionStorage的差异
+    <ul>
+      <li>localStorage是持久化的不会过期，sessionStorage页面关闭即生命周期结束</li>
+    </ul>
+  </li>
 </ul>
 
-<h3 id="section-2">16年</h3>
+<h3 id="section-1">总结</h3>
 <ul>
-  <li>历史总是惊人的相似这一年是react，vue成熟，落地，大规模推广使用的一年，h5前端生态和体系已趋于稳定。</li>
-  <li>这一年，react-native在被各种尝试。</li>
-  <li>这一年，也是weex兴起的一年，weex开源，天猫双十一weex的大规模使用。</li>
-  <li>这一年，直播，VR开发初露头角。</li>
-  <li>这一年，微信小程序又给我们带来了新的可能。</li>
+  <li>cookie，localStorage，sessionStorage作为前端本地存储的三大法宝，各自发挥着不同的作用</li>
+  <li>cookie更擅长于做关键信息的存储例如登录信息</li>
+  <li>localStorage适合做前端数据持久化，例如缓存一些base64的图片甚至是html，css，js等静态资源，实现页面秒出的效果</li>
+  <li>sessionStorage似乎是为了缓存当前页面数据而生</li>
 </ul>
 
-<h3 id="section-3">17年，哪些是意料之中，又会有怎样的惊喜。。。。。。</h3>
-
-<p>—— 后记于 2017.01.01</p>
+<p>—— 后记于 2017.03.24</p>
 
 
 
@@ -235,13 +296,12 @@
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2017/02/09/fe-2016"
-                    data-title="前端这几年"
-                    data-url="http://localhost:4000/2017/02/09/fe-2016/"
+                    data-thread-key="/2017/03/24/save-2017"
+                    data-title="前端本地存储那些事"
+                    data-url="http://localhost:4000/2017/03/24/save-2017/"
                     data-images="http://localhost:4000/img/post-bg-2015.jpg"
-                    data-content="14年
-
-  这一年，node是最火了，也因为node，前端的生态（包管理npm，bower，脚手架yo，打包工具grunt，gulp）在这一年迅速建立起... | 王恒飞的博客 | flyhighly Blog " >
+                    data-content="前言
+本地存储作为前端一个常见的功能，现阶段已经有很多场景，例如localStorage缓存静态资源已达到秒出的效果，利用localStorage或者se... | 王恒飞的博客 | flyhighly Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 
@@ -264,19 +324,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2017/01/01/hello-2017/" data-toggle="tooltip" data-placement="top" title="Hello 2017">
+                        <a href="/2017/03/19/egg1-2017/" data-toggle="tooltip" data-placement="top" title="egg入门">
                         Previous<br>
-                        <span>Hello 2017</span>
+                        <span>egg入门</span>
                         </a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2017/02/10/cmp/" data-toggle="tooltip" data-placement="top" title="前端组件化的一点思考">
-                        Next<br>
-                        <span>前端组件化的一点思考</span>
-                        </a>
-                    </li>
                     
                 </ul>
 
@@ -285,9 +338,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2017/02/09/fe-2016"
-                        data-title="前端这几年"
-                        data-url="http://localhost:4000/2017/02/09/fe-2016/" >
+                        data-thread-key="/2017/03/24/save-2017"
+                        data-title="前端本地存储那些事"
+                        data-url="http://localhost:4000/2017/03/24/save-2017/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->

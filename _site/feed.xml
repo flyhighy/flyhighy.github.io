@@ -5,9 +5,109 @@
     <description>前端开发小菜</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 19 Mar 2017 21:50:13 +0800</pubDate>
-    <lastBuildDate>Sun, 19 Mar 2017 21:50:13 +0800</lastBuildDate>
+    <pubDate>Sat, 25 Mar 2017 22:14:30 +0800</pubDate>
+    <lastBuildDate>Sat, 25 Mar 2017 22:14:30 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>前端本地存储那些事</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;前言&lt;/h3&gt;
+&lt;p&gt;本地存储作为前端一个常见的功能，现阶段已经有很多场景，例如localStorage缓存静态资源已达到秒出的效果，利用localStorage或者sessionStorage实现两个页面间数据的回传等等。cookie，sessionStorage，localStorage作为前端本地存储的三大法宝，我们有必要精通他们的使用方法&lt;/p&gt;
+
+&lt;h3 id=&quot;cookie&quot;&gt;cookie&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;什么是cookie
+    &lt;blockquote&gt;
+      &lt;p&gt;cookie 是存储于访问者的计算机中的变量。每当同一台计算机通过浏览器请求某个页面时，就会发送这个 cookie。你可以使用 JavaScript 来创建和取回 cookie 的值。&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;如何使用cookie
+    &lt;ul&gt;
+      &lt;li&gt;前端可直接查看或者操作本域名下的cookie，如下示例&lt;/li&gt;
+      &lt;li&gt;查看cookie
+        &lt;ul&gt;
+          &lt;li&gt;打开任意页面，在控制台输入document.cookie，可以查看该域名下的左右cookie内容&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;新增cookie
+        &lt;ul&gt;
+          &lt;li&gt;通过js命令document.cookie = name=value;expires=expiresDate，新增一条cookie记录，其中那么为要设置cookie名称，value为cookie的值，expires为过期时间&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;删除一条cookie
+        &lt;ul&gt;
+          &lt;li&gt;将该条cookie的过期时间设置为&amp;lt;=0的数&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;cookie的域名
+    &lt;ul&gt;
+      &lt;li&gt;每一个页面只能访问改页面下的cookie，例如www.taobao.com页面不能访问www.baidu.com下的cookie&lt;/li&gt;
+      &lt;li&gt;一般情况下二级域名cookie和一级域名的cookie也不能共享，因为域名不完全一致，例如trip.taobao.com不能直接共享www.taobao.com的cookie，但是如果设置了domain为taobao.com则可以实现共享
+        &lt;ul&gt;
+          &lt;li&gt;document.cookie = name=value;expires=expiresDate;domain=taobao.com&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;cookie的限制
+    &lt;ul&gt;
+      &lt;li&gt;由于每次页面向服务端发起请求都会带上cookie，所以cookie不宜过大&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;localstoragesessionstorage&quot;&gt;localstorage和sessionStorage&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;什么是localStorage和sessionStorage
+    &lt;blockquote&gt;
+      &lt;p&gt;HTML5 提供了两种在客户端存储数据的新方法，用于解决cookie不能存储大规模数据问题&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;使用方法
+    &lt;ul&gt;
+      &lt;li&gt;localStorage和sessionStorage的使用方法几乎是完全相同，通过以下api进行增，删，改，查
+        &lt;ul&gt;
+          &lt;li&gt;setItem，增或改&lt;/li&gt;
+          &lt;li&gt;removeItem，删除单个，clear删除全部&lt;/li&gt;
+          &lt;li&gt;getItem,查&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;但是由于localStorage和sessionStorage实际上使用的时候是一个js对象，所以可以通过.操作符和[]进行操作&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;域名限制
+    &lt;ul&gt;
+      &lt;li&gt;localstorage和sessionStorage都是只能访问当前域名下的，并且域名必须完全一致，包括协议&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;localstorage和sessionStorage的差异
+    &lt;ul&gt;
+      &lt;li&gt;localStorage是持久化的不会过期，sessionStorage页面关闭即生命周期结束&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;总结&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;cookie，localStorage，sessionStorage作为前端本地存储的三大法宝，各自发挥着不同的作用&lt;/li&gt;
+  &lt;li&gt;cookie更擅长于做关键信息的存储例如登录信息&lt;/li&gt;
+  &lt;li&gt;localStorage适合做前端数据持久化，例如缓存一些base64的图片甚至是html，css，js等静态资源，实现页面秒出的效果&lt;/li&gt;
+  &lt;li&gt;sessionStorage似乎是为了缓存当前页面数据而生&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;—— 后记于 2017.03.24&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 24 Mar 2017 20:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/03/24/save-2017/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/03/24/save-2017/</guid>
+        
+        <category>前端</category>
+        
+        
+      </item>
     
       <item>
         <title>egg入门</title>
