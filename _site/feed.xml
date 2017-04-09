@@ -5,8 +5,8 @@
     <description>前端开发小菜</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 25 Mar 2017 22:14:30 +0800</pubDate>
-    <lastBuildDate>Sat, 25 Mar 2017 22:14:30 +0800</lastBuildDate>
+    <pubDate>Sun, 09 Apr 2017 15:47:12 +0800</pubDate>
+    <lastBuildDate>Sun, 09 Apr 2017 15:47:12 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -501,6 +501,181 @@ react对于大部分开发者来说更像是一个黑盒，这样的有好有坏
         <pubDate>Thu, 09 Feb 2017 20:00:00 +0800</pubDate>
         <link>http://localhost:4000/2017/02/09/fe-2016/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/02/09/fe-2016/</guid>
+        
+        <category>前端</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>正则表达式这一趴</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;为什么会将这一趴，因为本人长时间负责交易页面，及表单页面，正则表达式的使用非常频繁，无奈掌握不牢固，每次都要百度一下，借此机会学习一下。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;简介&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;正则表达式是一个匹配字符串的规则，对字符串进行检测，从而判断字符串是否满足某种规则或者提取出符合某种规则的子字符串&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;示例&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;邮箱校验
+    &lt;ul&gt;
+      &lt;li&gt;11789873@qq.com,zhangsan@163.com,lisi.ly@gmail.com，qq邮箱，163邮箱和谷歌邮箱是我们常用的三种邮箱，如何校验一个字符串是不是一个邮箱地址？首先我们要找到匹配邮箱的这一规则&lt;/li&gt;
+      &lt;li&gt;根据我们了解，邮箱地址一般分为三个部分，分别是用户名，邮箱名，域名。其中邮箱名和邮箱类型由@符号分隔，邮箱类型和域名由.符号分隔，这三个部分分别又有哪些约束
+        &lt;ul&gt;
+          &lt;li&gt;用户名：qq邮箱要求是由3-18个英文、数字、点、减号、下划线组成，163邮箱要求是6~18个字符，可使用字母、数字、下划线，需以字母开头&lt;/li&gt;
+          &lt;li&gt;邮箱名：字母或者数字，常见的都在2-5位，但不排除有像alibaba-inc这样比较长的名称&lt;/li&gt;
+          &lt;li&gt;域名：常见的邮箱域名是.com，不排除有域名为其他.cn,.net等邮箱，域名通常只能是2-8位的字母&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;根据以上分析，可以得到邮箱校验的正则表达式，(\w|.|-|_){3,18}@\w{2,5}.\w{2,8}&lt;/li&gt;
+      &lt;li&gt;当然这只是个简单的校验，主要是避免用户输入时简单格式错误，有些情况即使错误也能校验通过，例如119000@tr.oo，据我们所知是没名称为tr的邮箱，更没有oo域名，当然要做的更严谨，域名是可以穷举出来校验，但是邮箱名就不好穷举了&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;正则语法之特殊字符&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;特殊字符，所谓特殊字符，就是一些有特殊含义的字符，例如上述邮箱校验中的{和|，但同时它们也是种字符，有时也需要匹配，下表是正则中的特殊字符含义&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;特殊字符&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;说明&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;匹配字符串开始的位置，另外在[中使用表示不接受该字符集合&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;常用来匹配字符串的结尾部分&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;()&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;标志表达式的开始和结束位置。子表达式可以获取供以后使用&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;?&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;匹配前面的表达式0到1次，例如[0-9]?,表示匹配0到1个数字&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;*&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;匹配前面的表达式0到多次，例如[0-9]*,表示匹配0个到多个数字&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;+&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;匹配前面的表达式1到多次，例如[0-9]+,表示匹配1个到多个数字&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;匹配除\n换行符的任何字符&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;标记一个中括号表达式的开始&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;| 将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， ‘n’ 匹配字符 ‘n’。’\n’ 匹配换行符。序列 ‘\’ 匹配 “&quot;，而&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;{&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;限定符开始&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;|&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;指明两项之间的一个选择，可以理解为或表达式的功能&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;以上特殊字符及在正则中有着特殊的语法，要想匹配上述特殊字符，请在特殊字符前面加\，此时正则表达式会将其当做普通字符匹配&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;正则语法之限定符&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;限定符是指定正则表达式的一个子规则必须出现几次才能满足条件，总共有?，&lt;em&gt;，+，{n}，{n,}，{m,n}。其中？，&lt;/em&gt;，+在特殊在特殊字符中已经介绍过，下面介绍其他几种&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;限定符&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;说明&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;{n}&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;表示匹配n次&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;{n,}&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;表示匹配n次及以上&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;{m,n}&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;表示匹配m次及以上，且n次及以下&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;例如邮箱正则中的用户名，邮箱名，域名有用到{m,n}这一限定符&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;其他常用字符&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;除了特殊字符和限定字符，还有其他一些常用的字符&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;字符&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;说明&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\d&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;匹配数字，等价于[0-9]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\D&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;匹配非数，等价于 [^0-9]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\w&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;匹配包括下划线的任何单词字符。等价于’[A-Za-z0-9_]’&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\W&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;匹配任何非单词字符。等价于 ‘[^A-Za-z0-9_]‘。&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;总结&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;在JavaScript中有这样一种理论叫做“鸭式辩型”，即会像鸭子一样呱呱叫，会游泳的就当作是鸭子。这一理论存在的原因和js的弱类型有关系，试想一下，要确定某个变量是不是类array类型，其实代码层面是没法直接检测的，所以我们认为它有array的某些特性，例如有length熟悉，map方法，即将它当作array类型。&lt;/li&gt;
+  &lt;li&gt;正则表达式我认为和“鸭式辩型”有异曲同工之处，只要通过某个正则表达式的校验，即认为该字符串满足某种特殊的规则，有时候用好正则能够非常优雅和高效&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;—— 后记于 2017.04.09&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 01 Jan 2017 20:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/01/01/regex-2017/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/01/regex-2017/</guid>
         
         <category>前端</category>
         

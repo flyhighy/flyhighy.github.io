@@ -10,7 +10,7 @@
     <meta name="keywords"  content="王恒飞, 承荫, 阿里, 博客, 个人网站, 互联网, 前端, 设计, 产品">
     <meta name="theme-color" content="#000000">
     
-    <title>初识TypeScript - 王恒飞的博客 | flyhighly Blog</title>
+    <title>正则表达式这一趴 - 王恒飞的博客 | flyhighly Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2017/03/11/ts/">
+    <link rel="canonical" href="http://localhost:4000/2017/01/01/regex-2017/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -177,12 +177,12 @@
                         <a class="tag" href="/tags/#前端" title="前端">前端</a>
                         
                     </div>
-                    <h1>初识TypeScript</h1>
+                    <h1>正则表达式这一趴</h1>
                     
                     
-                    <h2 class="subheading"> "ts"</h2>
+                    <h2 class="subheading"> "regex"</h2>
                     
-                    <span class="meta">Posted by hengfei on March 11, 2017</span>
+                    <span class="meta">Posted by hengfei on January 1, 2017</span>
                 </div>
             </div>
         </div>
@@ -200,82 +200,168 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h3 id="typescript">什么是TypeScript</h3>
-<blockquote>
-  <p>TypeScript，简称ts，是微软开发的一个JavaScript转译语言，且是JavaScript的超集，最终将会编译为JavaScript语言</p>
+				<blockquote>
+  <p>为什么会将这一趴，因为本人长时间负责交易页面，及表单页面，正则表达式的使用非常频繁，无奈掌握不牢固，每次都要百度一下，借此机会学习一下。</p>
 </blockquote>
 
-<h3 id="section">开发准备</h3>
+<h3 id="section">简介</h3>
 <ul>
-  <li>npm install -g typescript安装转译器</li>
-  <li>安装完成后我们就可以使用 TypeScript 编译器，名称叫 tsc，可将编译结果生成 js 文件，使用如下命令
-    <blockquote>
-      <p>tsc filename.ts</p>
-    </blockquote>
+  <li>正则表达式是一个匹配字符串的规则，对字符串进行检测，从而判断字符串是否满足某种规则或者提取出符合某种规则的子字符串</li>
+</ul>
+
+<h3 id="section-1">示例</h3>
+<ul>
+  <li>邮箱校验
+    <ul>
+      <li>11789873@qq.com,zhangsan@163.com,lisi.ly@gmail.com，qq邮箱，163邮箱和谷歌邮箱是我们常用的三种邮箱，如何校验一个字符串是不是一个邮箱地址？首先我们要找到匹配邮箱的这一规则</li>
+      <li>根据我们了解，邮箱地址一般分为三个部分，分别是用户名，邮箱名，域名。其中邮箱名和邮箱类型由@符号分隔，邮箱类型和域名由.符号分隔，这三个部分分别又有哪些约束
+        <ul>
+          <li>用户名：qq邮箱要求是由3-18个英文、数字、点、减号、下划线组成，163邮箱要求是6~18个字符，可使用字母、数字、下划线，需以字母开头</li>
+          <li>邮箱名：字母或者数字，常见的都在2-5位，但不排除有像alibaba-inc这样比较长的名称</li>
+          <li>域名：常见的邮箱域名是.com，不排除有域名为其他.cn,.net等邮箱，域名通常只能是2-8位的字母</li>
+        </ul>
+      </li>
+      <li>根据以上分析，可以得到邮箱校验的正则表达式，(\w|.|-|_){3,18}@\w{2,5}.\w{2,8}</li>
+      <li>当然这只是个简单的校验，主要是避免用户输入时简单格式错误，有些情况即使错误也能校验通过，例如119000@tr.oo，据我们所知是没名称为tr的邮箱，更没有oo域名，当然要做的更严谨，域名是可以穷举出来校验，但是邮箱名就不好穷举了</li>
+    </ul>
   </li>
 </ul>
 
-<h3 id="ts">TS几种重要的特性</h3>
+<h3 id="section-2">正则语法之特殊字符</h3>
 <ul>
-  <li>类型注解</li>
-  <li>接口 interface</li>
-  <li>类 class</li>
-  <li>模块 module</li>
-  <li>编译时检查 properly checked</li>
+  <li>特殊字符，所谓特殊字符，就是一些有特殊含义的字符，例如上述邮箱校验中的{和|，但同时它们也是种字符，有时也需要匹配，下表是正则中的特殊字符含义</li>
 </ul>
 
-<h3 id="section-1">特性说明和示例</h3>
-<h4 id="section-2">类型注解</h4>
-<p>ts有以下几种基础类型</p>
+<table>
+  <thead>
+    <tr>
+      <th>特殊字符</th>
+      <th style="text-align: center">说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>^</td>
+      <td style="text-align: center">匹配字符串开始的位置，另外在[中使用表示不接受该字符集合</td>
+    </tr>
+    <tr>
+      <td>$</td>
+      <td style="text-align: center">常用来匹配字符串的结尾部分</td>
+    </tr>
+    <tr>
+      <td>()</td>
+      <td style="text-align: center">标志表达式的开始和结束位置。子表达式可以获取供以后使用</td>
+    </tr>
+    <tr>
+      <td>?</td>
+      <td style="text-align: center">匹配前面的表达式0到1次，例如[0-9]?,表示匹配0到1个数字</td>
+    </tr>
+    <tr>
+      <td>*</td>
+      <td style="text-align: center">匹配前面的表达式0到多次，例如[0-9]*,表示匹配0个到多个数字</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td style="text-align: center">匹配前面的表达式1到多次，例如[0-9]+,表示匹配1个到多个数字</td>
+    </tr>
+    <tr>
+      <td>.</td>
+      <td style="text-align: center">匹配除\n换行符的任何字符</td>
+    </tr>
+    <tr>
+      <td>[</td>
+      <td style="text-align: center">标记一个中括号表达式的开始</td>
+    </tr>
+    <tr>
+      <td>| 将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， ‘n’ 匹配字符 ‘n’。’\n’ 匹配换行符。序列 ‘\’ 匹配 “"，而</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>{</td>
+      <td style="text-align: center">限定符开始</td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td style="text-align: center">指明两项之间的一个选择，可以理解为或表达式的功能</td>
+    </tr>
+  </tbody>
+</table>
+
 <ul>
-  <li>Boolean</li>
-  <li>Number</li>
-  <li>String</li>
-  <li>Array</li>
-  <li>Enum</li>
-  <li>Any</li>
-  <li>Void</li>
+  <li>以上特殊字符及在正则中有着特殊的语法，要想匹配上述特殊字符，请在特殊字符前面加\，此时正则表达式会将其当做普通字符匹配</li>
 </ul>
 
-<p>ts提供类型注解用于编译时检查，是可选的，注意是<font color="red">编译时检查</font>，也就是说可以理解为是一种开发中的语法检查，对运行时是无作用的
-<img src="../../../../img/type.png" alt="示例" />
-以上定义了三个变量a，b，c。a注解是number类型，b是字符串，c没有规定类型。
-此时a，b很好理解，必须是规定的类型，编译时会对赋值类型进行检查，如果赋值为非规定类型，则会抛出以下错误
-<img src="../../../../img/typeerror.png" alt="示例" />
-对于c来说，没有定义类型，所以它可以赋值任何类型的值，tsc编译时，会对其类型进行推断，无法推断的情况下会认为它是空对象类型，{}。</p>
-
-<h4 id="interface">接口，interface</h4>
-<blockquote>
-  <p>TypeScript的核心原则之一就是类型检查，重点对其所有的值进行检查。及我们常说的“鸭式辩型”或者称之为“子类型结构化”，而接口正是充当了类型定义的这一角色（这里所说的类型是基础类型组成的新的自定义复杂类型），另外它还是编写代码中以及和其他项目一种极其有力的约定，或者称为规范。</p>
-</blockquote>
-
-<p><img src="../../../../img/inter0.png" alt="示例" />
-以上示例中，printLabel函数规定参数了labelledObj必须有类型为string的label字段，编译时会对其进行检查，让我们看一下用interface时如何实现的
-<img src="../../../../img/inter1.png" alt="示例" />
-两种写法来看，用interface明显更加清晰，可靠。
-另外正如“鸭式辩型”一样，interface类型检测只会检查所要求的结构，字段是否满足，其他多余并不care，顺序也不会进行检查</p>
-
-<p>另外下面的这种用法，表示不是强制要求，即可以没有，有的话类型必须对
-<img src="../../../../img/inter2.png" alt="示例" /></p>
-
-<h4 id="class---module">类，class 和 模块 module</h4>
-<p>没有什么惊艳之处，es6已经支持class，module的写法，ts增加了一些新的特性，例如照抄java的public,private,protected的类属性的限制，以及抽象类等</p>
-
-<h3 id="section-3">写在最后</h3>
-<blockquote>
-  <p>JavaScript的最大优点是灵活，最大的缺点是太灵活</p>
-</blockquote>
-
-<p>弱类型，异常处理，动态编译造成JavaScript天生就是一门灵活的语言。好的开发者将JavaScript运用的淋漓尽致，一般的开发者被JavaScript玩弄于鼓掌之中或是停留在表皮。
-严格模式，es6的出现以及eslint的使用，都是JavaScript开发者规范其写法，以及规避异常的方式，TypeScript也不例外。类型检查，严谨的约定，清晰的结构化让TypeScript显得更加的像java那样正规，严谨。
-interface不同于java用于类去实现，而作为一种自定义的复杂类型让代码结构变得构架清晰，同时利于类型检查和模块接入，让人眼前一亮。
-作为一中灵活性极大地语言，TypeScript想要让开发者特放弃这种灵活，在业界普及，几乎不太可能。所以更加期待es7或者是es8能够看到这些变化！</p>
-
-<h3 id="section-4">相关参考</h3>
+<h3 id="section-3">正则语法之限定符</h3>
 <ul>
-  <li><a href="http://typescript.codeplex.com/documentation">TypeScript官方文档</a></li>
-  <li><a href="https://zhongsp.gitbooks.io/typescript-handbook/content/index.html">TypeScript中文文档</a></li>
+  <li>限定符是指定正则表达式的一个子规则必须出现几次才能满足条件，总共有?，<em>，+，{n}，{n,}，{m,n}。其中？，</em>，+在特殊在特殊字符中已经介绍过，下面介绍其他几种</li>
 </ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>限定符</th>
+      <th style="text-align: center">说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{n}</td>
+      <td style="text-align: center">表示匹配n次</td>
+    </tr>
+    <tr>
+      <td>{n,}</td>
+      <td style="text-align: center">表示匹配n次及以上</td>
+    </tr>
+    <tr>
+      <td>{m,n}</td>
+      <td style="text-align: center">表示匹配m次及以上，且n次及以下</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>例如邮箱正则中的用户名，邮箱名，域名有用到{m,n}这一限定符</li>
+</ul>
+
+<h3 id="section-4">其他常用字符</h3>
+<ul>
+  <li>除了特殊字符和限定字符，还有其他一些常用的字符</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>字符</th>
+      <th style="text-align: center">说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\d</td>
+      <td style="text-align: center">匹配数字，等价于[0-9]</td>
+    </tr>
+    <tr>
+      <td>\D</td>
+      <td style="text-align: center">匹配非数，等价于 [^0-9]</td>
+    </tr>
+    <tr>
+      <td>\w</td>
+      <td style="text-align: center">匹配包括下划线的任何单词字符。等价于’[A-Za-z0-9_]’</td>
+    </tr>
+    <tr>
+      <td>\W</td>
+      <td style="text-align: center">匹配任何非单词字符。等价于 ‘[^A-Za-z0-9_]‘。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="section-5">总结</h3>
+<ul>
+  <li>在JavaScript中有这样一种理论叫做“鸭式辩型”，即会像鸭子一样呱呱叫，会游泳的就当作是鸭子。这一理论存在的原因和js的弱类型有关系，试想一下，要确定某个变量是不是类array类型，其实代码层面是没法直接检测的，所以我们认为它有array的某些特性，例如有length熟悉，map方法，即将它当作array类型。</li>
+  <li>正则表达式我认为和“鸭式辩型”有异曲同工之处，只要通过某个正则表达式的校验，即认为该字符串满足某种特殊的规则，有时候用好正则能够非常优雅和高效</li>
+</ul>
+
+<p>—— 后记于 2017.04.09</p>
 
 
 
@@ -285,13 +371,16 @@ interface不同于java用于类去实现，而作为一种自定义的复杂类�
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2017/03/11/ts"
-                    data-title="初识TypeScript"
-                    data-url="http://localhost:4000/2017/03/11/ts/"
+                    data-thread-key="/2017/01/01/regex-2017"
+                    data-title="正则表达式这一趴"
+                    data-url="http://localhost:4000/2017/01/01/regex-2017/"
                     data-images="http://localhost:4000/img/post-bg-2015.jpg"
-                    data-content="什么是TypeScript
+                    data-content="
+  为什么会将这一趴，因为本人长时间负责交易页面，及表单页面，正则表达式的使用非常频繁，无奈掌握不牢固，每次都要百度一下，借此机会学习一下。
 
-  TypeScript，简称ts，是微软开发的一个JavaScript转译语言，且是JavaScript的超集，最终将会编... | 王恒飞的博客 | flyhighly Blog " >
+
+简介
+... | 王恒飞的博客 | flyhighly Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 
@@ -314,17 +403,17 @@ interface不同于java用于类去实现，而作为一种自定义的复杂类�
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2017/02/25/planb/" data-toggle="tooltip" data-placement="top" title="时刻保持危机感">
+                        <a href="/2017/01/01/hello-2017/" data-toggle="tooltip" data-placement="top" title="Hello 2017">
                         Previous<br>
-                        <span>时刻保持危机感</span>
+                        <span>Hello 2017</span>
                         </a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2017/03/19/egg1-2017/" data-toggle="tooltip" data-placement="top" title="egg入门">
+                        <a href="/2017/02/09/fe-2016/" data-toggle="tooltip" data-placement="top" title="前端这几年">
                         Next<br>
-                        <span>egg入门</span>
+                        <span>前端这几年</span>
                         </a>
                     </li>
                     
@@ -335,9 +424,9 @@ interface不同于java用于类去实现，而作为一种自定义的复杂类�
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2017/03/11/ts"
-                        data-title="初识TypeScript"
-                        data-url="http://localhost:4000/2017/03/11/ts/" >
+                        data-thread-key="/2017/01/01/regex-2017"
+                        data-title="正则表达式这一趴"
+                        data-url="http://localhost:4000/2017/01/01/regex-2017/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
